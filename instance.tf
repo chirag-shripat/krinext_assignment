@@ -1,5 +1,5 @@
 ## making instance in this vpc
-resource "aws_instance" "ansible-host" {
+resource "aws_instance" "pipeline-host" {
     ami = "ami-03cb1380eec7cc118"
     instance_type = "t2.micro"
     key_name = "mumbai_keys"
@@ -20,7 +20,7 @@ resource "aws_instance" "ansible-host" {
 
 
 ## making instance in this vpc
-resource "aws_instance" "ansible-slave" {
+resource "aws_instance" "pipeline-worker" {
     ami = "ami-03cb1380eec7cc118"
     instance_type = "t2.micro"
     key_name = "mumbai_keys"
@@ -34,7 +34,5 @@ resource "aws_instance" "ansible-slave" {
   user_data = <<-EOF
              #!/bin/bash
               sudo yum update -y
-              sudo amazon-linux-extras install ansible2 -y
-              sudo yum install -y mysql
               EOF
 }
