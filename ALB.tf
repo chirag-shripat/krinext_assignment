@@ -1,6 +1,6 @@
 ## Making Load Balancer target group
 resource "aws_lb_target_group" "TG-for-lb" {
-    name = "TG-for-LB"
+    name = "TG-LB"
     target_type = "instance"
     protocol = "HTTP"
     port = "80"
@@ -13,7 +13,7 @@ resource "aws_lb_target_group" "TG-for-lb" {
 
 ## Making load balancer
 resource "aws_lb" "ALB" {
-    name = "ALB"
+    name = "alb-project"
     load_balancer_type = "application"
     internal = false
     #subnets = ["public-subnet", "public-subnet2"]
@@ -21,7 +21,7 @@ resource "aws_lb" "ALB" {
     security_groups = [aws_security_group.project-sg.id]
 
     tags = {
-      "Name" = "alb"
+      "Name" = "alb-pro"
     }
 }
 

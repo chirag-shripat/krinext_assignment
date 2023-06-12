@@ -21,12 +21,12 @@ resource "aws_db_subnet_group" "db_subnet" {
 }
 
 resource "aws_db_instance" "mydb" {
-  identifier           = "my-database"
+  identifier           = "my-database1"
   engine               = "mysql"
   engine_version       = "8.0.28"
   instance_class       = "db.t2.micro"
   allocated_storage    = 20
-  db_name              = "dhanesh"
+  db_name              = "dhanesh1"
   username             = "admin"
   password             = "xnux9617?"
   parameter_group_name = "default.mysql8.0"
@@ -34,6 +34,6 @@ resource "aws_db_instance" "mydb" {
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
 
   tags = {
-    Name = "my-database"
+    Name = "my-database1"
   }
 }

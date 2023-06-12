@@ -175,11 +175,11 @@ resource "aws_route_table_association" "route-asso-4" {
 }
 
 resource "aws_eip" "eip" {
-  instance = aws_instance.ansible-host.id
+  instance = aws_instance.pipeline-host.id
   domain   = "vpc"
 }
 
 resource "aws_eip_association" "eip_asso" {
-  instance_id = aws_instance.ansible-host.id
+  instance_id = aws_instance.pipeline-host.id
   allocation_id = aws_eip.eip.id
 }
