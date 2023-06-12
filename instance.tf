@@ -16,6 +16,23 @@ resource "aws_instance" "pipeline-host" {
               sudo amazon-linux-extras install ansible2 -y
               sudo yum install -y mysql
               EOF
+
+
+connection {
+    type = "ssh"
+    user = "ec2-user"
+    private_key = file("mumbai_keys.pem")
+    host = self.public_ip
+  }
+
+  provisioner "file" {
+    source = "./myrole"
+    destination = "/home/ec2-user/"
+  }
+   provisioner "file" {
+    source = "./workspace"
+    destination = "/home/ec2-user/"
+  }
 }
 
 

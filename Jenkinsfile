@@ -12,7 +12,7 @@ pipeline {
                  script{
                         dir("terraform")
                         {
-                            git "https://github.com/chirag-shripat/krinext_assignment.git"
+                            git branch: 'main', credentialsId: 'github-pass', url: 'https://github.com/chirag-shripat/krinext_assignment.git'
                         }
                     }
                 }
@@ -21,14 +21,12 @@ pipeline {
         stage('Plan') {
             steps {
                 sh 'pwd;cd terraform/ ; terraform init'
-                sh "pwd;cd terraform/ ; terraform plan -out tfplan"
-                sh 'pwd;cd terraform/ ; terraform show -no-color tfplan > tfplan.txt'
             }
         }
 
         stage('Apply') {
             steps {
-                sh "pwd;cd terraform/ ; terraform apply -input=false tfplan"
+                sh "pwd;cd terraform/ ; terraform apply --auto-approve"
             }
         }
     }
