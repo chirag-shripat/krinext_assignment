@@ -20,6 +20,8 @@ Installed jenkins on an another ec2.
 Install required plugins (Terraform, ansible).
 Configure tools (Terraform, ansible).
 Create a new job and build a pipeline named 'assignment'.
+Create credentials of github and for ansible.
 write script in json to create pipeline.
-write all the stages from fetching the code from github to configure the infrastructure using ansible.
-And finally build all the stages.
+First write stages of fetch the code form git and build infrastructure. And build the pipeline.
+Then write the stages of configration of infrastaructure using ansible. And build the pipeline again.
+And finally the pipeline working properly and build all the stages.
