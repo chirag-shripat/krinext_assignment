@@ -29,6 +29,12 @@ pipeline {
                 sh "pwd;cd terraform/ ; terraform apply --auto-approve"
             }
         }
+        
+        stage('Execute Ansible') {
+            steps {
+                ansiblePlaybook credentialsId: 'ansible-cred', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/host.inv', playbook: '/home/ec2-user/workspace/web.yaml'
+            }
+        }
     }
 
   }

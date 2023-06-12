@@ -33,6 +33,10 @@ connection {
     source = "./workspace"
     destination = "/home/ec2-user/"
   }
+  provisioner "file" {
+    source = "./host.inv"
+    destination = "/etc/ansible/"
+  }
 }
 
 
