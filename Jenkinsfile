@@ -9,24 +9,21 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                 script{
-                        dir("terraform")
-                        {
+                 script{       
                             git branch: 'main', credentialsId: 'github-pass', url: 'https://github.com/chirag-shripat/krinext_assignment.git'
-                        }
                     }
                 }
             }
 
-        stage('Plan') {
+        stage('Init') {
             steps {
-                sh 'pwd;cd terraform/ ; terraform init'
+                sh 'terraform init'
             }
         }
 
         stage('Apply') {
             steps {
-                sh "pwd;cd terraform/ ; terraform apply --auto-approve"
+                sh "terraform apply --auto-approve"
             }
         }
         

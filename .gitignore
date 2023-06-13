@@ -1,6 +1,6 @@
 # Local .terraform directories
 **/.terraform/*
-
+mumbai_keys.pem
 # .tfstate files
 *.tfstate
 *.tfstate.*
